@@ -5,19 +5,19 @@ library(shinyWidgets)
 library(dplyr)
 
 # Load the trained GBM model
-model <- readRDS("model_DTC.RDS")
+model <- readRDS("Logistic_Model.RDS")
 
 ui <- dashboardPage(
   dashboardHeader(title = "Hepatitis B Prediction"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Prototype", tabName = "prediction")
+      menuItem("Prediction", tabName = "prediction")
     )
   ),
   dashboardBody(
     tabItems(
       tabItem(
-        tabName ="prediction",
+        tabName = "prediction",
         fluidPage(
           sidebarPanel(
             selectInput("Gender", "Gender:", choices = c("M", "F")),
@@ -28,7 +28,7 @@ ui <- dashboardPage(
             selectInput("HCV", "HCV:", choices = c("REACTIVE", "NONREACTIVE")),
             selectInput("HIV", "HIV:", choices = c("REACTIVE", "NONREACTIVE")),
             selectInput("TPHA", "TPHA:", choices = c("REACTIVE", "NONREACTIVE")),
-            actionButton("predictButton", "Predict Risk"),
+            actionButton("predictButton", "Predict"),
             actionButton("resetButton", "Reset")
           ),
           mainPanel(
